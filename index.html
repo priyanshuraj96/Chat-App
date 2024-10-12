@@ -29,7 +29,7 @@
                                 <label for="password" class="col-md-4 text-md-right">password</label>
                                 <div class="col-md-8">
                                     <input type="password" id="password" class="form-control" name="password" placeholder="enter password" autofocus>
-                                    <span class="text-danger" id="paswordErr"></span>
+                                    <span class="text-danger" id="passwordErr"></span>
                                 </div>
                                
                             </div>
@@ -90,12 +90,9 @@
                 signInWithEmailAndPassword(auth,email,password)
                 .then((userCredentials)=>{
                     const user= userCredentials.user;
-                    console.log("User credentials: ", user);
-                    localStorage.setItem("loggedIn_user_id",user.uid);
-                    localStorage.setItem("loggedIn_user_email",user.email);
-                    setTimeout(() => {
-                    location.href = "start-chat.html";
-                }, 2000); 
+                    localStorage.setItem("loggedin_user_id",user.uid);
+                    localStorage.setItem("loggedin_user_email",user.email);
+                    setTimeout(location.href="start-chat.html",2000);
                     }).catch((error)=>{
                         const errorCode = error.code;
                         const errorMessage = error.message;
