@@ -16,7 +16,7 @@
                 <div class="card" style="width:700px;height:500px;">
                     <div class="card-header text-center">
                         <span >All Users</span>
-                        <span class="float-end" data-bs-toggle="tooltip" data-bs-placement="right" style="cursor:pointer;" title="logout" ><i class="fa-solid fa-power-off"></i></span>
+                        <span class="float-end" data-bs-toggle="tooltip" data-bs-placement="right" style="cursor:pointer;" title="logout" onclick="triggerLogout()" ><i class="fa-solid fa-power-off"></i></span>
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush" id="user-list" style="cursor:pointer">
@@ -34,8 +34,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script> 
     <script src="validation.js"></script>
     <script>
+        if(localStorage.getItem('loggedin_user_id') == "" || localStorage.getItem('loggedin_user_id') == "undefined" || localStorage.getItem('loggedin_user_id') == "null" ){
+            location.href="index.html";
+        }
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        function triggerLogout(){
+            localStorage.removeItem('loggedin_user_id')
+            localStorage.removeItem('chat_user_id')
+            localStorage.removeItem('chat_user_email')
+            location.href="index.html";
+        }
     </script>
    <script type="module">
   
